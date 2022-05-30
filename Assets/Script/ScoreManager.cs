@@ -29,7 +29,6 @@ public class ScoreManager : MonoBehaviour
         gameoverscore.text = Score.ToString();
 
     }
-   
     public void SubtractMainScore(int score)
     {
         Score -= score;

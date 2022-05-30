@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class BasketUI : MonoBehaviour
 {
+    
     public string basketName;
     public int basketScore;
     public Text basketScoreText;
@@ -17,10 +18,19 @@ public class BasketUI : MonoBehaviour
         AccessoryBasket,
         TrekkingBasket
     }
+    
     void Start()
     {
         GetComponent<BoxCollider2D>();
-        
+        CountDown.instance.objremain = 15;
+    }
+    void update()
+    {
+        if (CountDown.instance.objremain == 0)
+        {
+            CountDown.instance.OverScreen.gameObject.SetActive(true);
+            Debug.Log("gameover");
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -40,7 +50,11 @@ public class BasketUI : MonoBehaviour
                 ScoreManager.Instance.AddBinCount();
                 CountDown.instance.audiosource.PlayOneShot(CountDown.instance.Wrongobjclip, 1);
             }
-                Destroy(collision.gameObject);
+            CountDown.instance._obj.Remove(collision.gameObject);
+            Destroy(collision.gameObject);
+            CountDown.instance.objremain--;
+            
+            
         }
     }
 }
