@@ -1989,7 +1989,7 @@ MonoBehaviour:
   fillingclip: {fileID: 8300000, guid: 4badf7e1b77fed147846b81907e27228, type: 3}
   Wrongobjclip: {fileID: 8300000, guid: 8f98a8fccfcc9174a876d7017ea5733f, type: 3}
   TimeOn: 1
-  TimeRemain: 5
+  TimeRemain: 20
   currenttimetext: {fileID: 777072418}
 --- !u!81 &704517768
 AudioListener:
