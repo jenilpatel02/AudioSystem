@@ -39,11 +39,8 @@ public class BasketUI : MonoBehaviour
                 ScoreManager.Instance.SubtractMainScore(collision.GetComponent<Objectbehaviour>().scoring );
                 ScoreManager.Instance.AddBinCount();
                 CountDown.instance.audiosource.PlayOneShot(CountDown.instance.Wrongobjclip, 1);
-  
-
-
             }
-            Destroy(collision.gameObject);
-                    }
+                Destroy(collision.gameObject);
+        }
     }
 }
