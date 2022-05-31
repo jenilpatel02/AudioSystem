@@ -7,7 +7,10 @@ public class CountDown : MonoBehaviour
     public List<GameObject> _obj;
     public Canvas HomeScreen;
     public Canvas OverScreen;
-    
+    public AudioSource audiosource;
+    public AudioClip backgroundclip;
+    public AudioClip fillingclip;
+    public AudioClip Wrongobjclip;
 
     public static CountDown instance;
     private void Awake()
@@ -21,6 +24,7 @@ public class CountDown : MonoBehaviour
     private void Start()
     {
         TimeOn = true;
+        audiosource.Play();
         objremain = 15;
     }
     
@@ -59,5 +63,8 @@ public class CountDown : MonoBehaviour
         float minute = Mathf.FloorToInt(currenttime / 60);
         float second = Mathf.FloorToInt(currenttime % 60);
         currenttimetext.text = string.Format("{0:00}:{1:00}", minute, second);
+        
+      
     }
+    
 }
