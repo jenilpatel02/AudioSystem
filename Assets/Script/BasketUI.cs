@@ -1,6 +1,8 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class BasketUI : MonoBehaviour
 {
@@ -38,16 +40,21 @@ public class BasketUI : MonoBehaviour
             {
                 basketScore += collision.GetComponent<Objectbehaviour>().BasketScore;
                 basketScoreText.text = basketScore.ToString();
-                ScoreManager.Instance.AddMainScore(collision.GetComponent<Objectbehaviour>().scoring);               
+                ScoreManager.Instance.AddMainScore(collision.GetComponent<Objectbehaviour>().scoring);
+                CountDown.instance.audiosource.PlayOneShot(CountDown.instance.fillingclip, 1);
+
             }
             else
             {
                 ScoreManager.Instance.SubtractMainScore(collision.GetComponent<Objectbehaviour>().scoring );
                 ScoreManager.Instance.AddBinCount();
+                CountDown.instance.audiosource.PlayOneShot(CountDown.instance.Wrongobjclip, 1);
             }
             CountDown.instance._obj.Remove(collision.gameObject);
             Destroy(collision.gameObject);
-            CountDown.instance.objremain--;   
+            CountDown.instance.objremain--;
+            
+            
         }
     }
 }
